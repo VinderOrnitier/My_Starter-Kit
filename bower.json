@@ -1,0 +1,14 @@
+{
+  "name": "my_gulp",
+  "version": "0.0.0",
+  "authors": [
+    "Vinder Ornitier <ornitier62@gmail.com>"
+  ],
+  "description": "Gulp, SASS + Jade + My Start-Kit",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "1.8",
+    "normalize.css": "~3.0.3",
+    "animate.css": "~3.4.0"
+  }
+}

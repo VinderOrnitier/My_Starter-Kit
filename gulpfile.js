@@ -17,6 +17,7 @@ var gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 		pngquant = require('imagemin-pngquant'),
 		imagemin = require('gulp-imagemin'),
+		spritesmith = require('gulp.spritesmith'),
 		wiredep = require('wiredep').stream;
 
 
@@ -119,7 +120,18 @@ gulp.task('imageMin', function () {
 		svgoPlugins: [{removeViewBox: false}],
 		use: [pngquant()]
 	}))
-	.pipe(gulp.dest('./dist/images'));
+	.pipe(gulp.dest('./dist/img'));
+});
+
+// Convert images into a spritesheet and CSS --- for production! ---
+gulp.task('sprite', function () {
+  var spriteData = gulp.src('./app/img/icons/*.png').pipe(spritesmith({
+		imgPath: '../img/icons/sprite.png',
+		imgName: 'sprite.png',
+    cssName: 'sprite.sass',
+		padding: 5
+  }));
+  return spriteData.pipe(gulp.dest('./app/img/icons/'));
 });
 
 /**
